@@ -48,8 +48,18 @@ public class Spinwheel : MonoBehaviour
         if(spin <= 0.001)
         {
             spin = 0;
+            FindObjectOfType<PlayerMovement>().canMove = true;
+            FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
             //Debug.Log(rectTransform.localEulerAngles.z / 360f);
             Debug.Log(IsSpinOnRed());
+            if (IsSpinOnRed())
+            {
+                //Fail capture, possibly bitten
+            }
+            else
+            {
+
+            }
         }
     }
 

@@ -5,17 +5,24 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
+    Animator animator;
     [SerializeField] private float MoveSpeed;
     [SerializeField] CatchingMenu catchingMenu;
+    [SerializeField] UI_Inventory uiInventory;
 
     public bool canMove;
+    private Vector2 movement;
+    private Inventory inventory;
 
-    Vector2 movement;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
+        //StartCoroutine(LateStart());
     }
 
     // Update is called once per frame
@@ -23,6 +30,24 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if(movement.x != 0)
+        {
+            animator.SetInteger("Walk", 1);
+            transform.localScale = new Vector2(movement.x * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+        }
+        else if (movement.y < 0)
+        {
+            animator.SetInteger("Walk", 2);
+        }
+        else if (movement.y > 0)
+        {
+            animator.SetInteger("Walk", 3);
+        }
+        else
+        {
+            animator.SetInteger("Walk", 0);
+        }
     }
 
     private void FixedUpdate()

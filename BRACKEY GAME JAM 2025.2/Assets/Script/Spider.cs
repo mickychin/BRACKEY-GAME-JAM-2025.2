@@ -8,6 +8,7 @@ public class Spider : MonoBehaviour
     public float Price;
     public float Bite_Rate;
     [SerializeField] private Item spider_item;
+    public SpriteRenderer Render;
 
     public void SetItem(Item item)
     {

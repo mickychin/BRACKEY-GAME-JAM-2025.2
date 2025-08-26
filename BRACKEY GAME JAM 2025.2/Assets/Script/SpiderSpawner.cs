@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Item;
 using static SpiderSpawner;
 
 public class SpiderSpawner : MonoBehaviour
@@ -17,11 +18,13 @@ public class SpiderSpawner : MonoBehaviour
         RadioactiveSpider
     }
 
-     [System.Serializable] public struct SpiderType
+    [System.Serializable] public struct SpiderType
     {
         public float Default_Risk;
         public float Price;
         public float Bite_Rate;
+        public bool isLethal;
+        public int weight; // Higher weight = higher chance
         public SpiderName spiderName;
     }
 
@@ -44,10 +47,50 @@ public class SpiderSpawner : MonoBehaviour
         }
     }
 
+    private SpiderType RandomSpiderType()
+    {
+        int totalWeight = 0;
+        foreach(SpiderType spiderType in spiderTypes)
+        {
+            totalWeight += spiderType.weight;
+        }
+
+        int randomNumber = Random.Range(0, totalWeight);
+
+        foreach (SpiderType spiderType in spiderTypes)
+        {
+            if (randomNumber < spiderType.weight)
+            {
+                return spiderType;
+            }
+            randomNumber -= spiderType.weight;
+        }
+        Debug.LogError("Weight Error!");
+        return new SpiderType(); //this should never happen just a safety net
+    }
+
+    public Sprite GetSpiderSprite(SpiderType spiderType)
+    {
+        switch (spiderType.spiderName)
+        {
+            default:
+            case SpiderName.MRKT: return ItemAssets.Instance.MRKTSprite;
+            case SpiderName.RJS: return ItemAssets.Instance.RJSSprite;
+            case SpiderName.OBT: return ItemAssets.Instance.OBTSprite;
+            case SpiderName.GB: return ItemAssets.Instance.GBSprite;
+            case SpiderName.GST: return ItemAssets.Instance.GSTSprite;
+            case SpiderName.BlackWidow: return ItemAssets.Instance.BlackWidowSprite;
+            case SpiderName.SFW: return ItemAssets.Instance.SFWSprite;
+            case SpiderName.RadioactiveSpider: return ItemAssets.Instance.RadioactiveSpiderSprite;
+        }
+    }
+
     private void Start()
     {
-        SpawnSpider(spiderTypes[0], new Vector2(Random.Range(-2f, 2f), 2f));
-        SpawnSpider(spiderTypes[0], new Vector2(Random.Range(-2f, 2f), 2f));
+        for (int i = 0; i < 20;  i++)
+        {
+            SpawnSpider(RandomSpiderType(), new Vector2(Random.Range(-6f, 6f), Random.Range(-9f, 9f)));
+        }
     }
 
     private void SpawnSpider(SpiderType spiderType, Vector2 spawn_pos)
@@ -57,6 +100,7 @@ public class SpiderSpawner : MonoBehaviour
         spider.Price = spiderType.Price;
         spider.Bite_Rate = spiderType.Bite_Rate;
         spider.name = spiderType.spiderName.ToString();
+        spider.Render.sprite = GetSpiderSprite(spiderType);
         spider.SetItem(GetSpiderItem(spiderType));
     }
 }

@@ -14,15 +14,27 @@ public class Food : MonoBehaviour
     Spinwheel spinwheel;
     PlayerMovement playerMovement;
     [SerializeField] private FoodEffect T1effect, T2effect, T3effect;
-    
+    private bool HasUseT1Food, HasUseT2Food, HasUseT3Food;
 
     private void Start()
     {
         playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
+    public void ResetHasUseFood()
+    {
+        HasUseT1Food = false;
+        HasUseT2Food = false;
+        HasUseT3Food = false;
+    }
+
     public void UseT1Food()
     {
+        if (HasUseT1Food)
+        {
+            return;
+        }
+        HasUseT1Food = true;
         playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.FoodT1, amount = 1 });
         spinwheel = FindObjectOfType<Spinwheel>();
         spinwheel.ChangeRisk(T1effect.Risk);
@@ -30,6 +42,11 @@ public class Food : MonoBehaviour
 
     public void UseT2Food()
     {
+        if (HasUseT2Food)
+        {
+            return;
+        }
+        HasUseT2Food = true;
         playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.FoodT2, amount = 1 });
         spinwheel = FindObjectOfType<Spinwheel>();
         spinwheel.ChangeRisk(T2effect.Risk);
@@ -37,6 +54,11 @@ public class Food : MonoBehaviour
 
     public void UseT3Food()
     {
+        if (HasUseT3Food)
+        {
+            return;
+        }
+        HasUseT3Food = true;
         playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.FoodT3, amount = 1 });
         spinwheel = FindObjectOfType<Spinwheel>();
         spinwheel.ChangeRisk(T3effect.Risk);

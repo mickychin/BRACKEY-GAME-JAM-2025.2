@@ -47,14 +47,14 @@ using UnityEngine;
             case ItemType.FoodT2:            return ItemAssets.Instance.FoodT2Sprite;
             case ItemType.FoodT3:            return ItemAssets.Instance.FoodT3Sprite;
             case ItemType.Biscuit:           return ItemAssets.Instance.BiscuitSprite;
-            case ItemType.MRKT:              return ItemAssets.Instance.MRKTSprite;
-            case ItemType.RJS:               return ItemAssets.Instance.RJSSprite;
-            case ItemType.OBT:               return ItemAssets.Instance.OBTSprite;
-            case ItemType.GB:                return ItemAssets.Instance.GBSprite;
-            case ItemType.GST:               return ItemAssets.Instance.GSTSprite;
-            case ItemType.BlackWidow:        return ItemAssets.Instance.BlackWidowSprite;
-            case ItemType.SFW:               return ItemAssets.Instance.SFWSprite;
-            case ItemType.RadioactiveSpider: return ItemAssets.Instance.RadioactiveSpiderSprite;
+            case ItemType.MRKT:              return ItemAssets.Instance.MRKTCapturedSprite;
+            case ItemType.RJS:               return ItemAssets.Instance.RJSSCapturedprite;
+            case ItemType.OBT:               return ItemAssets.Instance.OBTCapturedSprite;
+            case ItemType.GB:                return ItemAssets.Instance.GBCapturedSprite;
+            case ItemType.GST:               return ItemAssets.Instance.GSTCapturedSprite;
+            case ItemType.BlackWidow:        return ItemAssets.Instance.BlackWidowCapturedSprite;
+            case ItemType.SFW:               return ItemAssets.Instance.SFWCapturedSprite;
+            case ItemType.RadioactiveSpider: return ItemAssets.Instance.RadioactiveSpiderCapturedSprite;
         }
     }
 

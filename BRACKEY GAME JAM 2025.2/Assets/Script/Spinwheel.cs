@@ -62,6 +62,7 @@ public class Spinwheel : MonoBehaviour
         if(spin <= 0.001)
         {
             spin = 0;
+            FindObjectOfType<Food>().ResetHasUseFood();
             PlayerMovement player = FindObjectOfType<PlayerMovement>();
             player.removeItemFromINV(FindObjectOfType<Tool>().CurrentTool_Item());
             player.canMove = true;
@@ -82,6 +83,18 @@ public class Spinwheel : MonoBehaviour
     {
         float Flipped_Risk_Area = Mathf.Abs(Risk_Area.fillAmount - 1f);
         if(rectTransform.localEulerAngles.z / 360f >= Flipped_Risk_Area)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool isSpinning()
+    {
+        if(spin > 0)
         {
             return true;
         }

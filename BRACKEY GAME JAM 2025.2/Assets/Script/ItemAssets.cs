@@ -30,4 +30,13 @@ public class ItemAssets : MonoBehaviour
     public Sprite BlackWidowSprite;
     public Sprite SFWSprite;
     public Sprite RadioactiveSpiderSprite;
+
+    public Sprite MRKTCapturedSprite;
+    public Sprite RJSSCapturedprite;
+    public Sprite OBTCapturedSprite;
+    public Sprite GBCapturedSprite;
+    public Sprite GSTCapturedSprite;
+    public Sprite BlackWidowCapturedSprite;
+    public Sprite SFWCapturedSprite;
+    public Sprite RadioactiveSpiderCapturedSprite;
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Spinwheel : MonoBehaviour
 {
@@ -11,12 +12,25 @@ public class Spinwheel : MonoBehaviour
 
     [SerializeField] Image Risk_Area;
 
-    public void SetRisk(float risk)
+    private Spider currentSpider;
+
+    private void SetRisk(float risk)
     {
         if (Risk_Area)
         {
             Risk_Area.fillAmount = risk;
         }
+    }
+
+    public void ChangeRisk(float risk)
+    {
+        Risk_Area.fillAmount += risk;
+    }
+
+    public void SetSpider(Spider spider)
+    {
+        SetRisk(spider.Default_Risk);
+        currentSpider = spider;
     }
 
     public void Spin()
@@ -48,17 +62,18 @@ public class Spinwheel : MonoBehaviour
         if(spin <= 0.001)
         {
             spin = 0;
-            FindObjectOfType<PlayerMovement>().canMove = true;
+            PlayerMovement player = FindObjectOfType<PlayerMovement>();
+            player.removeItemFromINV(FindObjectOfType<Tool>().CurrentTool_Item());
+            player.canMove = true;
             FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
-            //Debug.Log(rectTransform.localEulerAngles.z / 360f);
-            Debug.Log(IsSpinOnRed());
             if (IsSpinOnRed())
             {
                 //Fail capture, possibly bitten
             }
             else
             {
-
+                FindObjectOfType<PlayerMovement>().addItemToINV(currentSpider.GetItem());
+                Destroy(currentSpider.gameObject);
             }
         }
     }

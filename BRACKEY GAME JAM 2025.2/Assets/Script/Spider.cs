@@ -7,17 +7,16 @@ public class Spider : MonoBehaviour
     public float Default_Risk;
     public float Price;
     public float Bite_Rate;
+    [SerializeField] private Item spider_item;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void SetItem(Item item)
     {
-        
+        spider_item = item;
     }
 
-    // Update is called once per frame
-    void Update()
+    public Item GetItem()
     {
-        
+        Item item = spider_item;
+        return item;
     }
 }

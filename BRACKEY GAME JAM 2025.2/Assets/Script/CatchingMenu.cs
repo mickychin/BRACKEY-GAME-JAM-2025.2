@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class CatchingMenu : MonoBehaviour
 {
+    Tool tool;
+
+    private void Start()
+    {
+        tool = FindObjectOfType<Tool>();
+    }
+
     public void Catch()
     {
         // Attemp to catch Spider
-        FindObjectOfType<Spinwheel>().Spin();
+        if (FindObjectOfType<PlayerMovement>().isIteminInventory(tool.CurrentTool_Item()))
+        {
+            FindObjectOfType<Spinwheel>().Spin();
+        }
+        else
+        {
+            //error noise
+        }
     }
 
     public void Run()

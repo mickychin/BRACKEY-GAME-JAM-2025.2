@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -63,11 +64,33 @@ public class PlayerMovement : MonoBehaviour
         if (collision.CompareTag("Spider"))
         {
             // collide with spider
-            Debug.Log("SPIDER");
+            //Debug.Log("SPIDER");
 
             catchingMenu.gameObject.SetActive(true);
-            FindObjectOfType<Spinwheel>().SetRisk(collision.GetComponent<Spider>().Default_Risk); // set risk of the wheel
+            FindObjectOfType<Spinwheel>().SetSpider(collision.GetComponent<Spider>()); // set risk of the wheel
             canMove = false;
         }
+    }
+
+    public void addItemToINV(Item item)
+    {
+        inventory.AddItem(item);
+    }
+
+    public void removeItemFromINV(Item item)
+    {
+        inventory.RemoveItem(item);
+    }
+
+    public bool isIteminInventory(Item item)
+    {
+        foreach(Item items in inventory.GetItemLists())
+        {
+            if(items.itemType == item.itemType)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

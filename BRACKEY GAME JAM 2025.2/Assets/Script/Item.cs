@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item
+[Serializable] public class Item
 {
     public enum ItemType
     {
@@ -54,6 +55,35 @@ public class Item
             case ItemType.BlackWidow:        return ItemAssets.Instance.BlackWidowSprite;
             case ItemType.SFW:               return ItemAssets.Instance.SFWSprite;
             case ItemType.RadioactiveSpider: return ItemAssets.Instance.RadioactiveSpiderSprite;
+        }
+    }
+
+    public bool isInteractable()
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.TubeContainer:
+            case ItemType.Bugnet:
+            case ItemType.FoodT1:
+            case ItemType.FoodT2:
+            case ItemType.FoodT3:
+            case ItemType.Biscuit:
+                return true;
+            case ItemType.Notebook:
+            case ItemType.Headlight:
+            case ItemType.Flashlight:
+            case ItemType.Antidote:
+            case ItemType.Gloves:
+            case ItemType.MRKT:
+            case ItemType.RJS:
+            case ItemType.OBT:
+            case ItemType.GB:
+            case ItemType.GST:
+            case ItemType.BlackWidow:
+            case ItemType.SFW:
+            case ItemType.RadioactiveSpider:
+                return false;
         }
     }
 }

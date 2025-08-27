@@ -7,6 +7,7 @@ public class Spider : MonoBehaviour
     public float Default_Risk;
     public float Price;
     public float Bite_Rate;
+    public bool IsLethal;
     [SerializeField] private Item spider_item;
     public SpriteRenderer Render;
 

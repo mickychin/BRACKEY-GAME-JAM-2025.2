@@ -99,6 +99,7 @@ public class SpiderSpawner : MonoBehaviour
         spider.Default_Risk = spiderType.Default_Risk;
         spider.Price = spiderType.Price;
         spider.Bite_Rate = spiderType.Bite_Rate;
+        spider.IsLethal = spiderType.isLethal;
         spider.name = spiderType.spiderName.ToString();
         spider.Render.sprite = GetSpiderSprite(spiderType);
         spider.SetItem(GetSpiderItem(spiderType));

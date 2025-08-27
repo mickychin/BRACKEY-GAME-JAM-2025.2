@@ -15,10 +15,10 @@ public class Inventory
 
         AddItem(new Item { itemType = Item.ItemType.TubeContainer, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Flashlight, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Bugnet, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.FoodT1, amount = 10 });
-        AddItem(new Item { itemType = Item.ItemType.FoodT2, amount = 10 });
-        AddItem(new Item { itemType = Item.ItemType.FoodT3, amount = 10 });
+        AddItem(new Item { itemType = Item.ItemType.Bugnet, amount = 4 });
+        AddItem(new Item { itemType = Item.ItemType.Fly, amount = 10 });
+        AddItem(new Item { itemType = Item.ItemType.Mosquito, amount = 10 });
+        AddItem(new Item { itemType = Item.ItemType.Ant, amount = 10 });
         Debug.Log(itemList.Count);
     }
 

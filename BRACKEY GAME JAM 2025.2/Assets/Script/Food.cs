@@ -35,9 +35,10 @@ public class Food : MonoBehaviour
             return;
         }
         HasUseT1Food = true;
-        playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.FoodT1, amount = 1 });
+        playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.Fly, amount = 1 });
         spinwheel = FindObjectOfType<Spinwheel>();
         spinwheel.ChangeRisk(T1effect.Risk);
+        spinwheel.ChangeBiteRate(T1effect.BiteChance);
     }
 
     public void UseT2Food()
@@ -47,9 +48,10 @@ public class Food : MonoBehaviour
             return;
         }
         HasUseT2Food = true;
-        playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.FoodT2, amount = 1 });
+        playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.Mosquito, amount = 1 });
         spinwheel = FindObjectOfType<Spinwheel>();
         spinwheel.ChangeRisk(T2effect.Risk);
+        spinwheel.ChangeBiteRate(T2effect.BiteChance);
     }
 
     public void UseT3Food()
@@ -59,8 +61,9 @@ public class Food : MonoBehaviour
             return;
         }
         HasUseT3Food = true;
-        playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.FoodT3, amount = 1 });
+        playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.Ant, amount = 1 });
         spinwheel = FindObjectOfType<Spinwheel>();
         spinwheel.ChangeRisk(T3effect.Risk);
+        spinwheel.ChangeBiteRate(T3effect.BiteChance);
     }
 }

@@ -94,4 +94,14 @@ public class PlayerMovement : MonoBehaviour
         }
         return false;
     }
+
+    public void PassOut()
+    {
+        FindObjectOfType<GameOverAndPassOut>().LoadPassout();
+    }
+
+    public void Die()
+    {
+        FindObjectOfType<GameOverAndPassOut>().LoadGameOver();
+    }
 }

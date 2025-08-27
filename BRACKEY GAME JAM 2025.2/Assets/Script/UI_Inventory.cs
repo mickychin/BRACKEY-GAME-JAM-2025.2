@@ -95,15 +95,15 @@ public class UI_Inventory : MonoBehaviour
         {
             button.onClick.AddListener(FindObjectOfType<Tool>().SetTool_Bugnet);
         }
-        else if (item.itemType == Item.ItemType.FoodT1)
+        else if (item.itemType == Item.ItemType.Fly)
         {
             button.onClick.AddListener(FindObjectOfType<Food>().UseT1Food);
         }
-        else if (item.itemType == Item.ItemType.FoodT2)
+        else if (item.itemType == Item.ItemType.Mosquito)
         {
             button.onClick.AddListener(FindObjectOfType<Food>().UseT2Food);
         }
-        else if (item.itemType == Item.ItemType.FoodT3)
+        else if (item.itemType == Item.ItemType.Ant)
         {
             button.onClick.AddListener(FindObjectOfType<Food>().UseT3Food);
         }

@@ -14,9 +14,9 @@ using UnityEngine;
         Flashlight,
         Antidote,
         Gloves,
-        FoodT1,
-        FoodT2,
-        FoodT3,
+        Fly,
+        Mosquito,
+        Ant,
         Biscuit,
         MRKT,
         RJS,
@@ -43,9 +43,9 @@ using UnityEngine;
             case ItemType.Flashlight:        return ItemAssets.Instance.FlashlightSprite;
             case ItemType.Antidote:          return ItemAssets.Instance.AntidoteSprite;
             case ItemType.Gloves:            return ItemAssets.Instance.GlovesSprite;
-            case ItemType.FoodT1:            return ItemAssets.Instance.FoodT1Sprite;
-            case ItemType.FoodT2:            return ItemAssets.Instance.FoodT2Sprite;
-            case ItemType.FoodT3:            return ItemAssets.Instance.FoodT3Sprite;
+            case ItemType.Fly:            return ItemAssets.Instance.FoodT1Sprite;
+            case ItemType.Mosquito:            return ItemAssets.Instance.FoodT2Sprite;
+            case ItemType.Ant:            return ItemAssets.Instance.FoodT3Sprite;
             case ItemType.Biscuit:           return ItemAssets.Instance.BiscuitSprite;
             case ItemType.MRKT:              return ItemAssets.Instance.MRKTCapturedSprite;
             case ItemType.RJS:               return ItemAssets.Instance.RJSSCapturedprite;
@@ -65,9 +65,9 @@ using UnityEngine;
             default:
             case ItemType.TubeContainer:
             case ItemType.Bugnet:
-            case ItemType.FoodT1:
-            case ItemType.FoodT2:
-            case ItemType.FoodT3:
+            case ItemType.Fly:
+            case ItemType.Mosquito:
+            case ItemType.Ant:
             case ItemType.Biscuit:
                 return true;
             case ItemType.Notebook:

@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float MoveSpeed;
     [SerializeField] CatchingMenu catchingMenu;
     [SerializeField] UI_Inventory uiInventory;
+    [SerializeField] GameObject GoNextDayCanvas;
 
     public bool canMove;
     private Vector2 movement;
@@ -21,7 +22,14 @@ public class PlayerMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        inventory = new Inventory();
+        if(FindObjectOfType<GameMaster>().MainInventory != null)
+        {
+            inventory = FindObjectOfType<GameMaster>().MainInventory;
+        }
+        else
+        {
+            inventory = new Inventory();
+        }
         uiInventory.SetInventory(inventory);
         //StartCoroutine(LateStart());
     }
@@ -71,16 +79,24 @@ public class PlayerMovement : MonoBehaviour
             FindObjectOfType<Spinwheel>().SetSpider(collision.GetComponent<Spider>()); // set risk of the wheel
             canMove = false;
         }
+
+        if (collision.CompareTag("Van"))
+        {
+            // collide with van
+            GoNextDayCanvas.SetActive(true);
+        }
     }
 
     public void addItemToINV(Item item)
     {
         inventory.AddItem(item);
+        FindObjectOfType<GameMaster>().MainInventory = inventory;
     }
 
     public void removeItemFromINV(Item item)
     {
         inventory.RemoveItem(item);
+        FindObjectOfType<GameMaster>().MainInventory = inventory;
     }
 
     public bool isIteminInventory(Item item)
@@ -97,11 +113,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void PassOut()
     {
+        //reduce money maybe
         FindObjectOfType<GameOverAndPassOut>().LoadPassout();
     }
 
     public void Die()
     {
+        FindObjectOfType<GameMaster>().CurrentMoney = 0; //reset money when die
+        FindObjectOfType<GameMaster>().MainInventory = new Inventory(); //reset money when die
         FindObjectOfType<GameOverAndPassOut>().LoadGameOver();
     }
 }

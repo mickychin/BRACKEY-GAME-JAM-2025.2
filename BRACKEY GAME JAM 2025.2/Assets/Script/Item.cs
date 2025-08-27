@@ -5,7 +5,7 @@ using UnityEngine;
 
 [Serializable] public class Item
 {
-    public enum ItemType
+    [Serializable] public enum ItemType
     {
         TubeContainer,
         Notebook,

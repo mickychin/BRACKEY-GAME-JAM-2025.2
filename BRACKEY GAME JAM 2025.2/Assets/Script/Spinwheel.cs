@@ -104,6 +104,7 @@ public class Spinwheel : MonoBehaviour
             else
             {
                 FindObjectOfType<PlayerMovement>().addItemToINV(currentSpider.GetItem());
+                FindObjectOfType<GameMaster>().CurrentMoney += (int)currentSpider.Price; // maybe reworked later
                 Destroy(currentSpider.gameObject);
             }
         }

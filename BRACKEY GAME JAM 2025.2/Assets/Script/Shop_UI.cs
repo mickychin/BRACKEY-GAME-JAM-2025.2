@@ -15,11 +15,31 @@ public class Shop_UI : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] public ItemPrice[] itemsPrice;
     [SerializeField] TextMeshProUGUI moneyText;
+    [SerializeField] TextMeshProUGUI DayText;
+    GameMaster gamemaster;
 
     private void Start()
     {
-        inventory = new Inventory();
-        moneyText.text = "$" + FindObjectOfType<GameMaster>().CurrentMoney.ToString(); //update money UI
+        gamemaster = FindObjectOfType<GameMaster>();
+        if (gamemaster.MainInventory != null)
+        {
+            inventory = gamemaster.MainInventory;
+        }
+        else
+        {
+            inventory = new Inventory();
+        }
+        gamemaster.CurrentDay++;
+        if (gamemaster.IsShowedDay)
+        {
+            DayText.gameObject.SetActive(false);
+        }
+        else
+        {
+            DayText.text = "Day " + gamemaster.CurrentDay.ToString();
+        }
+            gamemaster.IsShowedDay = false;
+        moneyText.text = "$" + gamemaster.CurrentMoney.ToString(); //update money UI
     }
 
     public void BuyItem(string itemName)
@@ -35,20 +55,20 @@ public class Shop_UI : MonoBehaviour
                     if (itemPrice.itemType == item)  // check for the same item type
                     {
                         //Debug.Log(item.ToString());
-                        if (itemPrice.price > FindObjectOfType<GameMaster>().CurrentMoney) //basically checking if we have enough money
+                        if (itemPrice.price > gamemaster.CurrentMoney) //basically checking if we have enough money
                         {
                             return; //we dont have enough money
                         }
                         else
                         {
-                            FindObjectOfType<GameMaster>().CurrentMoney -= itemPrice.price; //we have enough money reduce money
-                            moneyText.text = "$" + FindObjectOfType<GameMaster>().CurrentMoney.ToString(); //update money UI
+                            gamemaster.CurrentMoney -= itemPrice.price; //we have enough money reduce money
+                            moneyText.text = "$" + gamemaster.CurrentMoney.ToString(); //update money UI
                         }
                     }
                 }
 
                 inventory.AddItem(new Item { itemType = item, amount = 1}); //add item
-                FindObjectOfType<GameMaster>().MainInventory = inventory;
+                gamemaster.MainInventory = inventory;
             }
         }
     }

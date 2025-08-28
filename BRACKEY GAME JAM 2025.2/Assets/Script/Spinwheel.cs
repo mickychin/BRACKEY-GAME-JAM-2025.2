@@ -92,7 +92,7 @@ public class Spinwheel : MonoBehaviour
             PlayerMovement player = FindObjectOfType<PlayerMovement>();
             player.removeItemFromINV(FindObjectOfType<Tool>().CurrentTool_Item());
             player.canMove = true;
-            FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
+            //FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
             if (IsSpinOnRed())
             {
                 //Fail capture, possibly bitten
@@ -100,11 +100,17 @@ public class Spinwheel : MonoBehaviour
                 {
                     SpiderBite();
                 }
+                else
+                {
+                    FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
+                }
             }
             else
             {
+                FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
                 FindObjectOfType<PlayerMovement>().addItemToINV(currentSpider.GetItem());
                 FindObjectOfType<GameMaster>().CurrentMoney += (int)currentSpider.Price; // maybe reworked later
+                FindObjectOfType<GameMaster>().TotalEarnedMoney += (int)currentSpider.Price;
                 Destroy(currentSpider.gameObject);
             }
         }

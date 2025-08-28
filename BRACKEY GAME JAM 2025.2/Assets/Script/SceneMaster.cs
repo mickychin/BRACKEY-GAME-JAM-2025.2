@@ -7,6 +7,12 @@ public class SceneMaster : MonoBehaviour
 {
     public void LoadMain()
     {
+        //reset save
+        GameMaster gamemaster = FindObjectOfType<GameMaster>();
+        gamemaster.CurrentDay = 1;
+        gamemaster.CurrentMoney = 0;
+        gamemaster.TotalEarnedMoney = 0;
+        gamemaster.MainInventory = new Inventory();
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -17,7 +23,15 @@ public class SceneMaster : MonoBehaviour
 
     public void LoadShop()
     {
-        SceneManager.LoadScene("Shop");
+        int LastDay = 5;
+        if (FindObjectOfType<GameMaster>().CurrentDay >= LastDay)
+        {
+            SceneManager.LoadScene("Victory");
+        }
+        else
+        {
+            SceneManager.LoadScene("Shop");
+        }
     }
 
     public void Quit()

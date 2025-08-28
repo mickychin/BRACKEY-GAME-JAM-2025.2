@@ -15,6 +15,11 @@ public class CatchingMenu : MonoBehaviour
 
     public void Catch()
     {
+        if (FindObjectOfType<Spinwheel>().isSpinning())
+        {
+            return;
+        }
+
         // Attemp to catch Spider
         if (FindObjectOfType<PlayerMovement>().isIteminInventory(tool.CurrentTool_Item()))
         {

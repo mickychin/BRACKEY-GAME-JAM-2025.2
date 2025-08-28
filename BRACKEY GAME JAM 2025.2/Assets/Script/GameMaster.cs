@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameMaster : MonoBehaviour
 {
     public int CurrentMoney;
+    public int TotalEarnedMoney;
+    public int CurrentDay;
+    public bool IsShowedDay;
     public Inventory MainInventory;
 
     // Start is called before the first frame update

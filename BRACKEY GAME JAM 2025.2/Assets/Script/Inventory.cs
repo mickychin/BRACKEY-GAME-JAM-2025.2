@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[Serializable]
+[Serializable]
 public class Inventory
 {
     public event EventHandler OnItemListChanged;
@@ -13,13 +13,8 @@ public class Inventory
     {
         itemList = new List<Item>();
 
-        AddItem(new Item { itemType = Item.ItemType.TubeContainer, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Flashlight, amount = 1 });
-        AddItem(new Item { itemType = Item.ItemType.Bugnet, amount = 4 });
-        AddItem(new Item { itemType = Item.ItemType.Fly, amount = 10 });
-        AddItem(new Item { itemType = Item.ItemType.Mosquito, amount = 10 });
-        AddItem(new Item { itemType = Item.ItemType.Ant, amount = 10 });
-        Debug.Log(itemList.Count);
+        itemList.Add(new Item { itemType = Item.ItemType.TubeContainer, amount = 5});
+        //Debug.Log(itemList.Count);
     }
 
     public void AddItem(Item item)

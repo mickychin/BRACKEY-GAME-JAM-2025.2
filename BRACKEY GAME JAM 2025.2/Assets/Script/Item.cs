@@ -29,6 +29,8 @@ using UnityEngine;
     }
 
     public ItemType itemType;
+    public float ItemRiskBuff;
+    public float ItemBiteRateBuff;
     public int amount;
 
     public Sprite GetSprite()

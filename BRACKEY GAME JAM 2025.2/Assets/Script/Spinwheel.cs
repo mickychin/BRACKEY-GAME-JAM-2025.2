@@ -12,6 +12,8 @@ public class Spinwheel : MonoBehaviour
 
     [SerializeField] Image Risk_Area;
 
+    [SerializeField] GameObject Antidote_Canvas;
+
     private Spider currentSpider;
     private float currentBiteRate;
     private float currentRisk;
@@ -19,9 +21,12 @@ public class Spinwheel : MonoBehaviour
     private float ToolBiteRate;
     private float ToolRisk;
 
+    private float PassiveRiskBuff;
+    private float PassiveBiteRateBuff;
+
     private void UpdateRiskMeter()
     {
-        Risk_Area.fillAmount = currentRisk + ToolRisk;
+        Risk_Area.fillAmount = currentRisk + ToolRisk + PassiveRiskBuff;
     }
 
     public void SetToolBiteRate(float rate)
@@ -54,7 +59,17 @@ public class Spinwheel : MonoBehaviour
 
     public void SetSpider(Spider spider)
     {
+        PassiveBiteRateBuff = 0;
+        PassiveRiskBuff = 0;
+        foreach (Item item in FindObjectOfType<GameMaster>().MainInventory.GetItemLists()) //get the buff from equipment and item
+        {
+            PassiveBiteRateBuff += item.ItemBiteRateBuff;
+            PassiveRiskBuff += item.ItemRiskBuff;
+        }
+
         SetRisk(spider.Default_Risk);
+        Debug.Log(PassiveRiskBuff);
+        Debug.Log(currentRisk + ToolRisk + PassiveRiskBuff);
         currentSpider = spider;
         currentBiteRate = currentSpider.Bite_Rate;
     }
@@ -91,7 +106,6 @@ public class Spinwheel : MonoBehaviour
             FindObjectOfType<Food>().ResetHasUseFood();
             PlayerMovement player = FindObjectOfType<PlayerMovement>();
             player.removeItemFromINV(FindObjectOfType<Tool>().CurrentTool_Item());
-            player.canMove = true;
             //FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
             if (IsSpinOnRed())
             {
@@ -103,10 +117,12 @@ public class Spinwheel : MonoBehaviour
                 else
                 {
                     FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
+                    player.canMove = true;
                 }
             }
             else
             {
+                player.canMove = true;
                 FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
                 FindObjectOfType<PlayerMovement>().addItemToINV(currentSpider.GetItem());
                 FindObjectOfType<GameMaster>().CurrentMoney += (int)currentSpider.Price; // maybe reworked later
@@ -118,6 +134,17 @@ public class Spinwheel : MonoBehaviour
 
     private void SpiderBite()
     {
+        foreach (Item item in FindObjectOfType<GameMaster>().MainInventory.GetItemLists()) // check through every item in inventory
+        {
+            if (item.itemType == Item.ItemType.Antidote) // check if we have Antidote
+            {
+                //have Antidote (maybe reworked?)
+                Antidote_Canvas.SetActive(true);
+                Antidote_Canvas.GetComponent<Animator>().SetTrigger("PlayAnim");
+                return;
+            }
+        }
+
         if (currentSpider.IsLethal)
         {
             // player die
@@ -133,7 +160,7 @@ public class Spinwheel : MonoBehaviour
     {
         int randomNumber = Random.Range(1, 101);
         int converDecimalToPercent = 100;
-        if (randomNumber <= (currentBiteRate + ToolBiteRate) * converDecimalToPercent)
+        if (randomNumber <= (currentBiteRate + ToolBiteRate + PassiveBiteRateBuff) * converDecimalToPercent)
         {
             return true;
         }

@@ -11,6 +11,8 @@ public class Shop_UI : MonoBehaviour
         public Item.ItemType itemType;
         public int price;
         public int QuantityLimit;
+        public float RiskBuff;
+        public float BiteRateBuff;
     }
 
     [SerializeField] private Inventory inventory;
@@ -51,11 +53,12 @@ public class Shop_UI : MonoBehaviour
             {
                 //we found the item
                 //Debug.Log(item.ToString());
+                ItemPrice currentItemPrice = new ItemPrice();
                 foreach (ItemPrice itemPrice in itemsPrice)
                 {
                     if (itemPrice.itemType == item)  // check for the same item type
                     {
-                        //Debug.Log(item.ToString());
+                        currentItemPrice = itemPrice;
                         if (itemPrice.price > gamemaster.CurrentMoney) //basically checking if we have enough money
                         {
                             return; //we dont have enough money
@@ -78,7 +81,7 @@ public class Shop_UI : MonoBehaviour
                     }
                 }
 
-                inventory.AddItem(new Item { itemType = item, amount = 1}); //add item
+                inventory.AddItem(new Item { itemType = item, amount = 1, ItemBiteRateBuff = currentItemPrice.BiteRateBuff, ItemRiskBuff = currentItemPrice.RiskBuff }); //add item
                 gamemaster.MainInventory = inventory;
             }
         }

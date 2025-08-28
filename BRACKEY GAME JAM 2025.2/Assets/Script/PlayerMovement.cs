@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Timeline.Actions.MenuPriority;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +11,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CatchingMenu catchingMenu;
     [SerializeField] UI_Inventory uiInventory;
     [SerializeField] GameObject GoNextDayCanvas;
+    [SerializeField] private GameObject HeadLight_Mask;
+    [SerializeField] private Light2D HeadLight_Light;
+    [SerializeField] private float HeadLightRadius;
+    [SerializeField] private GameObject FlashLight_Mask;
+    [SerializeField] private Light2D FlashLight_Light;
 
     public bool canMove;
     private Vector2 movement;
@@ -31,6 +36,22 @@ public class PlayerMovement : MonoBehaviour
             inventory = new Inventory();
         }
         uiInventory.SetInventory(inventory);
+
+        foreach (Item item in FindObjectOfType<GameMaster>().MainInventory.GetItemLists()) // check through every item in inventory
+        {
+            if(item.itemType == Item.ItemType.Headlight) // check if we have headlight
+            {
+                //have head light
+                HeadLight_Light.pointLightOuterRadius = HeadLightRadius;
+                HeadLight_Mask.transform.localScale = new Vector2(HeadLightRadius, HeadLightRadius);
+            }
+            if (item.itemType == Item.ItemType.Flashlight) // check if we have flashlight
+            {
+                //have flashlight
+                FlashLight_Mask.SetActive(true);
+                FlashLight_Light.gameObject.SetActive(true);
+            }
+        }
         //StartCoroutine(LateStart());
     }
 
@@ -40,20 +61,26 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        if(movement.x != 0)
+        if(movement.x != 0) //walking horizontally
         {
             animator.SetInteger("Walk", 1);
             transform.localScale = new Vector2(movement.x * Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            FlashLight_Light.transform.localEulerAngles = new Vector3(0, 0, 0);
+            FlashLight_Mask.transform.localEulerAngles = new Vector3(0, 0, 0);
         }
-        else if (movement.y < 0)
+        else if (movement.y < 0) //walking down
         {
             animator.SetInteger("Walk", 2);
+            FlashLight_Light.transform.localEulerAngles = new Vector3(0, 0, -90);
+            FlashLight_Mask.transform.localEulerAngles = new Vector3(0, 0, -90);
         }
-        else if (movement.y > 0)
+        else if (movement.y > 0) //walking up
         {
             animator.SetInteger("Walk", 3);
+            FlashLight_Light.transform.localEulerAngles = new Vector3(0, 0, 90);
+            FlashLight_Mask.transform.localEulerAngles = new Vector3(0, 0, 90);
         }
-        else
+        else //not walking
         {
             animator.SetInteger("Walk", 0);
         }

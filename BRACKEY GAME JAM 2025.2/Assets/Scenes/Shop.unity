@@ -1077,30 +1077,48 @@ MonoBehaviour:
   - itemType: 0
     price: 20
     QuantityLimit: 10
+    RiskBuff: 0
+    BiteRateBuff: 0
   - itemType: 2
     price: 50
     QuantityLimit: 3
+    RiskBuff: 0
+    BiteRateBuff: 0
   - itemType: 3
     price: 100
     QuantityLimit: 1
+    RiskBuff: -0.1
+    BiteRateBuff: 0
   - itemType: 4
     price: 30
     QuantityLimit: 1
+    RiskBuff: 0
+    BiteRateBuff: 0
   - itemType: 5
     price: 200
     QuantityLimit: 2
+    RiskBuff: 0
+    BiteRateBuff: 0
   - itemType: 6
     price: 150
     QuantityLimit: 1
+    RiskBuff: 0
+    BiteRateBuff: -0.2
   - itemType: 7
     price: 20
     QuantityLimit: 5
+    RiskBuff: 0
+    BiteRateBuff: 0
   - itemType: 8
     price: 20
     QuantityLimit: 5
+    RiskBuff: 0
+    BiteRateBuff: 0
   - itemType: 9
     price: 50
     QuantityLimit: 3
+    RiskBuff: 0
+    BiteRateBuff: 0
   moneyText: {fileID: 512463274}
   DayText: {fileID: 261921797}
 --- !u!114 &210709043

@@ -31,7 +31,7 @@ public class Inventory
         }
         if (!itemAlreadyInInventory)
         {
-            itemList.Add(new Item { itemType = item.itemType, amount = item.amount});
+            itemList.Add(new Item { itemType = item.itemType, amount = item.amount, ItemRiskBuff = item.ItemRiskBuff, ItemBiteRateBuff = item.ItemBiteRateBuff});
         }
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }

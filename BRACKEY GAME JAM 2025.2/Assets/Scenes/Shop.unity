@@ -1076,22 +1076,31 @@ MonoBehaviour:
   itemsPrice:
   - itemType: 0
     price: 20
+    QuantityLimit: 10
   - itemType: 2
     price: 50
+    QuantityLimit: 3
   - itemType: 3
     price: 100
+    QuantityLimit: 1
   - itemType: 4
     price: 30
+    QuantityLimit: 1
   - itemType: 5
     price: 200
+    QuantityLimit: 2
   - itemType: 6
     price: 150
+    QuantityLimit: 1
   - itemType: 7
     price: 20
+    QuantityLimit: 5
   - itemType: 8
     price: 20
+    QuantityLimit: 5
   - itemType: 9
     price: 50
+    QuantityLimit: 3
   moneyText: {fileID: 512463274}
   DayText: {fileID: 261921797}
 --- !u!114 &210709043
@@ -2590,7 +2599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0783bb0ecbc943443af04ff6bf66d180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentMoney: 100
+  CurrentMoney: 1000
   TotalEarnedMoney: 0
   CurrentDay: 0
   IsShowedDay: 0
@@ -5135,7 +5144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1564589241
 RectTransform:
   m_ObjectHideFlags: 0

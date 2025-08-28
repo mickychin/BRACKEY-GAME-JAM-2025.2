@@ -10,6 +10,7 @@ public class Shop_UI : MonoBehaviour
     {
         public Item.ItemType itemType;
         public int price;
+        public int QuantityLimit;
     }
 
     [SerializeField] private Inventory inventory;
@@ -61,6 +62,16 @@ public class Shop_UI : MonoBehaviour
                         }
                         else
                         {
+                            foreach(Item itemInventory in FindObjectOfType<GameMaster>().MainInventory.GetItemLists())
+                            {
+                                if(itemInventory.itemType == item) //check for the same type of item in inventory
+                                {
+                                    if(itemInventory.amount >= itemPrice.QuantityLimit)
+                                    {
+                                        return;
+                                    }
+                                }
+                            }
                             gamemaster.CurrentMoney -= itemPrice.price; //we have enough money reduce money
                             moneyText.text = "$" + gamemaster.CurrentMoney.ToString(); //update money UI
                         }

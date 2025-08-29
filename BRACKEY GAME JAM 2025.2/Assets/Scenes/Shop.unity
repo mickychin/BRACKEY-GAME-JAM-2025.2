@@ -1763,7 +1763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808359e8497af5147b18a98c1998a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Its container
+  message: Cure spider venom
 --- !u!114 &313016953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1912,7 +1912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808359e8497af5147b18a98c1998a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Its container
+  message: Spider food, spider love this
 --- !u!114 &322142384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2864,7 +2864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808359e8497af5147b18a98c1998a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Its container
+  message: Spider food, lower their agro
 --- !u!114 &706629140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3013,7 +3013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808359e8497af5147b18a98c1998a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Its container
+  message: Increased visibility
 --- !u!114 &756088535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3847,7 +3847,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0f52b0adc47f35d479c789b427f1ffd8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 50481bc2e2afc3e458fa307a856d6857, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -4152,7 +4152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808359e8497af5147b18a98c1998a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Its container
+  message: Lowers chance of getting bit
 --- !u!114 &992779136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4643,7 +4643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 0.19607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4681,7 +4681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinPos: {x: 0, y: 0}
-  MaxPos: {x: 2000, y: 750}
+  MaxPos: {x: 1500, y: 770}
   textComponent: {fileID: 1338438589}
 --- !u!1 &1382585134
 GameObject:
@@ -6075,7 +6075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808359e8497af5147b18a98c1998a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Its bugnet
+  message: Captures from long range
 --- !u!114 &1691328388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6583,7 +6583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808359e8497af5147b18a98c1998a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Its container
+  message: Increased visibility in the player's direction
 --- !u!114 &1877201033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6732,7 +6732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808359e8497af5147b18a98c1998a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Its container
+  message: Spider food, make them calm
 --- !u!114 &1881585781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7252,7 +7252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808359e8497af5147b18a98c1998a541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Its container
+  message: Standard capture device
 --- !u!1 &2123914200
 GameObject:
   m_ObjectHideFlags: 0

@@ -560,7 +560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $150
+  m_text: $50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
   m_sharedMaterial: {fileID: -4240879538865536879, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $30
+  m_text: $15
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
   m_sharedMaterial: {fileID: -4240879538865536879, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
@@ -1076,47 +1076,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsPrice:
   - itemType: 0
-    price: 20
+    price: 15
     QuantityLimit: 10
     RiskBuff: 0
     BiteRateBuff: 0
   - itemType: 2
-    price: 50
+    price: 25
     QuantityLimit: 3
     RiskBuff: 0
     BiteRateBuff: 0
   - itemType: 3
-    price: 100
+    price: 50
     QuantityLimit: 1
     RiskBuff: -0.1
     BiteRateBuff: 0
   - itemType: 4
-    price: 30
+    price: 15
     QuantityLimit: 1
     RiskBuff: 0
     BiteRateBuff: 0
   - itemType: 5
-    price: 200
+    price: 100
     QuantityLimit: 2
     RiskBuff: 0
     BiteRateBuff: 0
   - itemType: 6
-    price: 150
+    price: 50
     QuantityLimit: 1
     RiskBuff: 0
     BiteRateBuff: -0.2
   - itemType: 7
-    price: 20
+    price: 10
     QuantityLimit: 5
     RiskBuff: 0
     BiteRateBuff: 0
   - itemType: 8
-    price: 20
+    price: 10
     QuantityLimit: 5
     RiskBuff: 0
     BiteRateBuff: 0
   - itemType: 9
-    price: 50
+    price: 20
     QuantityLimit: 3
     RiskBuff: 0
     BiteRateBuff: 0
@@ -1289,7 +1289,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $50
+  m_text: $20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
   m_sharedMaterial: {fileID: -4240879538865536879, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
@@ -1423,7 +1423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $20
+  m_text: $10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
   m_sharedMaterial: {fileID: -4240879538865536879, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $100
+  m_text: $50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
   m_sharedMaterial: {fileID: -4240879538865536879, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
@@ -4306,7 +4306,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $20
+  m_text: $10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
   m_sharedMaterial: {fileID: -4240879538865536879, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
@@ -4742,7 +4742,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $200
+  m_text: $100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
   m_sharedMaterial: {fileID: -4240879538865536879, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
@@ -5812,7 +5812,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $50
+  m_text: $25
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
   m_sharedMaterial: {fileID: -4240879538865536879, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
@@ -6379,7 +6379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $20
+  m_text: $10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
   m_sharedMaterial: {fileID: -4240879538865536879, guid: 06bb6816c0a919b45b0859d06961175a, type: 2}
@@ -7298,7 +7298,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TubeContainer
+          m_StringArgument: Container
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2121801738

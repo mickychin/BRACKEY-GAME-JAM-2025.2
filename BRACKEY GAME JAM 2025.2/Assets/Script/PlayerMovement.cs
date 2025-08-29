@@ -26,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float StepsTakeToMakeWalkSound;
     private float step;
 
+    [SerializeField] GameObject walk_Particle;
+    [SerializeField] private Transform walk_particle_spawn_pos;
+    [SerializeField] private float StepsTakeToMakeWalkParticle;
+    private float step_particle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -97,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
     private void TakeStep()
     {
         step += Time.deltaTime;
+        step_particle += Time.deltaTime;
+
         if(step > StepsTakeToMakeWalkSound)
         {
             // take a step
@@ -106,6 +113,14 @@ public class PlayerMovement : MonoBehaviour
             audioSource.pitch = Random.Range(minPitch, maxPitch);
             audioSource.clip = WalkSFX[Random.Range(0, WalkSFX.Length)];
             audioSource.Play();
+
+            
+        }
+
+        if(step_particle > StepsTakeToMakeWalkParticle)
+        {
+            step_particle = 0;
+            Instantiate(walk_Particle, walk_particle_spawn_pos.position, Quaternion.identity);
         }
     }
 

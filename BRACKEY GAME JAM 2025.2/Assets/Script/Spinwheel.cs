@@ -24,6 +24,8 @@ public class Spinwheel : MonoBehaviour
     private float PassiveRiskBuff;
     private float PassiveBiteRateBuff;
 
+    AudioSource audioSource;
+
     private void UpdateRiskMeter()
     {
         Risk_Area.fillAmount = currentRisk + ToolRisk + PassiveRiskBuff;
@@ -77,31 +79,32 @@ public class Spinwheel : MonoBehaviour
     public void Spin()
     {
         float spinPower = Random.Range(80f, 1000f);
+        audioSource.Play();
         spin = spinPower;
     }
 
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Spin();
-            SetRisk(0.5f);
-        }
 
         if(spin == 0)
         {
             return;
         }
 
+        int maxSpinPower = 100;
+        float maxSpinPitch = 1;
+        audioSource.pitch = 0.1f + (Mathf.Min(spin / maxSpinPower, maxSpinPitch) * 2.9f);   
         rectTransform.Rotate(new Vector3(0, 0, spin));
         spin *= spin_decline_rate;
         if(spin <= 0.001)
         {
+            audioSource.Stop();
             spin = 0;
             FindObjectOfType<Food>().ResetHasUseFood();
             PlayerMovement player = FindObjectOfType<PlayerMovement>();
@@ -116,6 +119,7 @@ public class Spinwheel : MonoBehaviour
                 }
                 else
                 {
+                    FindObjectOfType<GameMusic>().PlayWalkMusic();
                     FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
                     player.canMove = true;
                 }
@@ -123,6 +127,8 @@ public class Spinwheel : MonoBehaviour
             else
             {
                 player.canMove = true;
+                FindObjectOfType<GameMusic>().PlayWalkMusic();
+                FindObjectOfType<SFX_Player>().playCapturedSFX();
                 FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
                 FindObjectOfType<PlayerMovement>().addItemToINV(currentSpider.GetItem());
                 FindObjectOfType<GameMaster>().CurrentMoney += (int)currentSpider.Price; // maybe reworked later
@@ -144,6 +150,8 @@ public class Spinwheel : MonoBehaviour
                 return;
             }
         }
+
+        FindObjectOfType<GameMusic>().StopMusic();
 
         if (currentSpider.IsLethal)
         {

@@ -20,9 +20,14 @@ public class Shop_UI : MonoBehaviour
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] TextMeshProUGUI DayText;
     GameMaster gamemaster;
+    AudioSource audioSource;
+
+    [SerializeField] AudioClip ErrorShopsSFX;
+    [SerializeField] AudioClip SuccessShopsSFX;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         gamemaster = FindObjectOfType<GameMaster>();
         if (gamemaster.MainInventory != null)
         {
@@ -61,6 +66,8 @@ public class Shop_UI : MonoBehaviour
                         currentItemPrice = itemPrice;
                         if (itemPrice.price > gamemaster.CurrentMoney) //basically checking if we have enough money
                         {
+                            audioSource.clip = ErrorShopsSFX;
+                            audioSource.Play();
                             return; //we dont have enough money
                         }
                         else
@@ -71,7 +78,9 @@ public class Shop_UI : MonoBehaviour
                                 {
                                     if(itemInventory.amount >= itemPrice.QuantityLimit)
                                     {
-                                        return;
+                                        audioSource.clip = ErrorShopsSFX;
+                                        audioSource.Play();
+                                        return; //max amount of item
                                     }
                                 }
                             }
@@ -81,6 +90,8 @@ public class Shop_UI : MonoBehaviour
                     }
                 }
 
+                audioSource.clip = SuccessShopsSFX;
+                audioSource.Play();
                 inventory.AddItem(new Item { itemType = item, amount = 1, ItemBiteRateBuff = currentItemPrice.BiteRateBuff, ItemRiskBuff = currentItemPrice.RiskBuff }); //add item
                 gamemaster.MainInventory = inventory;
             }

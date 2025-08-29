@@ -101,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
             // collide with spider
             //Debug.Log("SPIDER");
 
+            FindObjectOfType<GameMusic>().PlayEncounterMusic();
             catchingMenu.gameObject.SetActive(true);
             catchingMenu.SetSpiderImage(collision.GetComponent<Spider>().Render.sprite); // Set the spider Image in the bg
             FindObjectOfType<Spinwheel>().SetSpider(collision.GetComponent<Spider>()); // set risk of the wheel

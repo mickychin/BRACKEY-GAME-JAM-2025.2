@@ -91,7 +91,7 @@ public class UI_Inventory : MonoBehaviour
 
     public void SetButton(Item item, Button button)
     {
-        if (item.itemType == Item.ItemType.TubeContainer)
+        if (item.itemType == Item.ItemType.Container)
         {
             button.onClick.AddListener(FindObjectOfType<Tool>().SetTool_TubeContainer);
         }

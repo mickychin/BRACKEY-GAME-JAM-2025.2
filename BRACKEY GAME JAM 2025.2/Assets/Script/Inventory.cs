@@ -13,7 +13,7 @@ public class Inventory
     {
         itemList = new List<Item>();
 
-        itemList.Add(new Item { itemType = Item.ItemType.TubeContainer, amount = 5});
+        itemList.Add(new Item { itemType = Item.ItemType.Container, amount = 5});
         //Debug.Log(itemList.Count);
     }
 

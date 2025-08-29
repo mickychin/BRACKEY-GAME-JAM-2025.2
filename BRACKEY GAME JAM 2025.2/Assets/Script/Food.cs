@@ -16,8 +16,11 @@ public class Food : MonoBehaviour
     [SerializeField] private FoodEffect T1effect, T2effect, T3effect;
     private bool HasUseT1Food, HasUseT2Food, HasUseT3Food;
 
+    AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
@@ -34,6 +37,8 @@ public class Food : MonoBehaviour
         {
             return;
         }
+
+        audioSource.Play();
         HasUseT1Food = true;
         playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.Fly, amount = 1 });
         spinwheel = FindObjectOfType<Spinwheel>();
@@ -47,6 +52,7 @@ public class Food : MonoBehaviour
         {
             return;
         }
+        audioSource.Play();
         HasUseT2Food = true;
         playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.Mosquito, amount = 1 });
         spinwheel = FindObjectOfType<Spinwheel>();
@@ -60,6 +66,7 @@ public class Food : MonoBehaviour
         {
             return;
         }
+        audioSource.Play();
         HasUseT3Food = true;
         playerMovement.removeItemFromINV(new Item { itemType = Item.ItemType.Ant, amount = 1 });
         spinwheel = FindObjectOfType<Spinwheel>();

@@ -47,7 +47,7 @@ public class Tool : MonoBehaviour
         switch(CurrentEquippedTool)
         {
             default:
-            case ToolType.TubeContainer: return new Item { itemType = Item.ItemType.TubeContainer, amount = 1 };
+            case ToolType.TubeContainer: return new Item { itemType = Item.ItemType.Container, amount = 1 };
             case ToolType.Bugnet: return new Item { itemType = Item.ItemType.Bugnet, amount = 1 };
         }
     }

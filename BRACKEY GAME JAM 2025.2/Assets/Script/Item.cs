@@ -7,7 +7,7 @@ using UnityEngine;
 {
     [Serializable] public enum ItemType
     {
-        TubeContainer,
+        Container,
         Notebook,
         Bugnet,
         Headlight,
@@ -38,7 +38,7 @@ using UnityEngine;
         switch (itemType)
         {
             default:
-            case ItemType.TubeContainer:     return ItemAssets.Instance.TubeContainerSprite;
+            case ItemType.Container:     return ItemAssets.Instance.TubeContainerSprite;
             case ItemType.Notebook:          return ItemAssets.Instance.NotebookSprite;
             case ItemType.Bugnet:            return ItemAssets.Instance.BugnetSprite;
             case ItemType.Headlight:         return ItemAssets.Instance.HeadlightSprite;
@@ -65,7 +65,7 @@ using UnityEngine;
         switch (itemType)
         {
             default:
-            case ItemType.TubeContainer:
+            case ItemType.Container:
             case ItemType.Bugnet:
             case ItemType.Fly:
             case ItemType.Mosquito:

@@ -36,7 +36,7 @@ public class CatchingMenu : MonoBehaviour
 
     private void playSFX()
     {
-        if(tool.CurrentTool_Item().itemType == Item.ItemType.TubeContainer)
+        if(tool.CurrentTool_Item().itemType == Item.ItemType.Container)
         {
             GetComponent<AudioSource>().clip = ContainerSFX;
             GetComponent<AudioSource>().Play();

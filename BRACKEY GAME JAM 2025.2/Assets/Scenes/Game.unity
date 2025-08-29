@@ -1272,7 +1272,7 @@ MonoBehaviour:
   GoNextDayCanvas: {fileID: 907627480}
   HeadLight_Mask: {fileID: 389106248}
   HeadLight_Light: {fileID: 1498187218}
-  HeadLightRadius: 2.5
+  HeadLightRadius: 3
   FlashLight_Mask: {fileID: 838432687}
   FlashLight_Light: {fileID: 491633019}
   canMove: 1
@@ -5109,7 +5109,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.086, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 93269305}
@@ -17116,7 +17116,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1.5
+  m_PointLightOuterRadius: 2.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -17830,7 +17830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkMusic: {fileID: 8300000, guid: 956dd8e729efa1e47b0b85bf06962f98, type: 3}
-  encounterMusic: {fileID: 8300000, guid: 3191d7a759298e140913e56a4c3c62c6, type: 3}
+  encounterMusic: {fileID: 8300000, guid: 1935e68268593a64cb003e5080ec0165, type: 3}
 --- !u!82 &1574810912
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20373,7 +20373,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8d9be6db62305ac4dbbfe9830cdf077a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

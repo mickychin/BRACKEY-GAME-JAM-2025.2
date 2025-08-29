@@ -10,6 +10,9 @@ public class GameMaster : MonoBehaviour
     public bool IsShowedDay;
     public Inventory MainInventory;
 
+    public float MusicVolume;
+    public float SFXVolume;
+
     // Start is called before the first frame update
     void Awake()
     {

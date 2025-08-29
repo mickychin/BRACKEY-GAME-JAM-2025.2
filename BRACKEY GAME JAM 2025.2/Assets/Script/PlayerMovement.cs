@@ -20,11 +20,16 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove;
     private Vector2 movement;
     private Inventory inventory;
+    AudioSource audioSource;
 
+    [SerializeField] AudioClip[] WalkSFX;
+    [SerializeField] private float StepsTakeToMakeWalkSound;
+    private float step;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         if(FindObjectOfType<GameMaster>().MainInventory != null)
@@ -63,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(movement.x != 0) //walking horizontally
         {
+            TakeStep();
             animator.SetInteger("Walk", 1);
             transform.localScale = new Vector2(movement.x * Mathf.Abs(transform.localScale.x), transform.localScale.y);
             FlashLight_Light.transform.localEulerAngles = new Vector3(0, 0, 0);
@@ -70,12 +76,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (movement.y < 0) //walking down
         {
+            TakeStep();
             animator.SetInteger("Walk", 2);
             FlashLight_Light.transform.localEulerAngles = new Vector3(0, 0, -90);
             FlashLight_Mask.transform.localEulerAngles = new Vector3(0, 0, -90);
         }
         else if (movement.y > 0) //walking up
         {
+            TakeStep();
             animator.SetInteger("Walk", 3);
             FlashLight_Light.transform.localEulerAngles = new Vector3(0, 0, 90);
             FlashLight_Mask.transform.localEulerAngles = new Vector3(0, 0, 90);
@@ -83,6 +91,21 @@ public class PlayerMovement : MonoBehaviour
         else //not walking
         {
             animator.SetInteger("Walk", 0);
+        }
+    }
+
+    private void TakeStep()
+    {
+        step += Time.deltaTime;
+        if(step > StepsTakeToMakeWalkSound)
+        {
+            // take a step
+            step = 0;
+            float minPitch = 0.9f;
+            float maxPitch = 1.1f;
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
+            audioSource.clip = WalkSFX[Random.Range(0, WalkSFX.Length)];
+            audioSource.Play();
         }
     }
 

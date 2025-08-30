@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
+using TMPro;
 
 public class Spinwheel : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Spinwheel : MonoBehaviour
     [SerializeField] Image Risk_Area;
 
     [SerializeField] GameObject Antidote_Canvas;
+
+    [SerializeField] TextMeshProUGUI Moneytext;
 
     private Spider currentSpider;
     private float currentBiteRate;
@@ -132,6 +135,7 @@ public class Spinwheel : MonoBehaviour
                 FindObjectOfType<CatchingMenu>().gameObject.SetActive(false);
                 FindObjectOfType<PlayerMovement>().addItemToINV(currentSpider.GetItem());
                 FindObjectOfType<GameMaster>().CurrentMoney += (int)currentSpider.Price; // maybe reworked later
+                Moneytext.text = "$" + FindObjectOfType<GameMaster>().CurrentMoney.ToString();
                 FindObjectOfType<GameMaster>().TotalEarnedMoney += (int)currentSpider.Price;
                 Destroy(currentSpider.gameObject);
             }

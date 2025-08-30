@@ -385,6 +385,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1479883504228675517, guid: 89953fcbabe417c43895ebc84d1b4b9d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479883504228675517, guid: 89953fcbabe417c43895ebc84d1b4b9d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060659267780221548, guid: 89953fcbabe417c43895ebc84d1b4b9d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391032596494159277, guid: 89953fcbabe417c43895ebc84d1b4b9d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391032596494159277, guid: 89953fcbabe417c43895ebc84d1b4b9d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319120011644493096, guid: 89953fcbabe417c43895ebc84d1b4b9d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4025936479794757279, guid: 89953fcbabe417c43895ebc84d1b4b9d, type: 3}
       propertyPath: m_Name
       value: Setting Canvas

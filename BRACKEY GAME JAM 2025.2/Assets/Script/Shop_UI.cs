@@ -25,6 +25,10 @@ public class Shop_UI : MonoBehaviour
     [SerializeField] AudioClip ErrorShopsSFX;
     [SerializeField] AudioClip SuccessShopsSFX;
 
+    [SerializeField] GameObject ConfirmPurches_Canvas;
+    ItemPrice currentItemPrice;
+    Item.ItemType currentItemType;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -58,7 +62,7 @@ public class Shop_UI : MonoBehaviour
             {
                 //we found the item
                 //Debug.Log(item.ToString());
-                ItemPrice currentItemPrice = new ItemPrice();
+                currentItemPrice = new ItemPrice();
                 foreach (ItemPrice itemPrice in itemsPrice)
                 {
                     if (itemPrice.itemType == item)  // check for the same item type
@@ -84,17 +88,23 @@ public class Shop_UI : MonoBehaviour
                                     }
                                 }
                             }
-                            gamemaster.CurrentMoney -= itemPrice.price; //we have enough money reduce money
-                            moneyText.text = "$" + gamemaster.CurrentMoney.ToString(); //update money UI
+
                         }
                     }
                 }
-
-                audioSource.clip = SuccessShopsSFX;
-                audioSource.Play();
-                inventory.AddItem(new Item { itemType = item, amount = 1, ItemBiteRateBuff = currentItemPrice.BiteRateBuff, ItemRiskBuff = currentItemPrice.RiskBuff }); //add item
-                gamemaster.MainInventory = inventory;
+                currentItemType = item;
+                ConfirmPurches_Canvas.SetActive(true);
             }
         }
+    }
+
+    public void ConfirmPurches()
+    {
+        gamemaster.CurrentMoney -= currentItemPrice.price; //we have enough money reduce money
+        moneyText.text = "$" + gamemaster.CurrentMoney.ToString(); //update money UI
+        audioSource.clip = SuccessShopsSFX;
+        audioSource.Play();
+        inventory.AddItem(new Item { itemType = currentItemType, amount = 1, ItemBiteRateBuff = currentItemPrice.BiteRateBuff, ItemRiskBuff = currentItemPrice.RiskBuff }); //add item
+        gamemaster.MainInventory = inventory;
     }
 }
